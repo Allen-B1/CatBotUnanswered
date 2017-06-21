@@ -1,24 +1,14 @@
-<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBLkaw7WG3PNl9TKrhMEXJw6xobbnKsQng",
-    authDomain: "social-media-11480.firebaseapp.com",
-    databaseURL: "https://social-media-11480.firebaseio.com",
-    projectId: "social-media-11480",
-    storageBucket: "social-media-11480.appspot.com",
-    messagingSenderId: "871316192813"
-  };
-  firebase.initializeApp(config);
-</script>
+ <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script> <script> // Initialize Firebase var config = { apiKey: "AIzaSyCPQkYVv4IBMmrRoZCm0o6nxtz_b5l97do", authDomain: "catbot-e8162.firebaseapp.com", databaseURL: "https://catbot-e8162.firebaseio.com", projectId: "catbot-e8162", storageBucket: "catbot-e8162.appspot.com", messagingSenderId: "163767605951" }; firebase.initializeApp(config); </script>
+
+
 <H1>Here are the most recent unanswered texts</H1>
 <p id="texts"></p>
 <script>
-var playersRef = firebase.database().ref("Chat/");
-playersRef.on("child_added", function(data, prevChildKey) {
-var newPlayer = data.val();
+var messages = firebase.database().ref("UnResponded/");
+messages.on("child_added", function(data, prevChildKey) {
+var text = data.val();
 var printlines = document.createElement("P");
-var textNode = document.createTextNode(newPlayer.Message.user)
+var textNode = document.createTextNode(text.Message.user)
 printlines.appendChild(textNode)
 document.getElementById("texts").appendChild(printlines);
 });
