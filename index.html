@@ -6,9 +6,9 @@
 <script>
 var messages = firebase.database().ref("UnResponded/");
 messages.on("child_added", function(data, prevChildKey) {
-var text = data.val();
+var textinger = data.val();
 var printlines = document.createElement("P");
-var textNode = document.createTextNode(text.Message.user)
+var textNode = document.createTextNode(textinger.Message.text)
 printlines.appendChild(textNode)
 document.getElementById("texts").appendChild(printlines);
 });
